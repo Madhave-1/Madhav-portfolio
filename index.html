@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madhavendra Kumar Awasthi | Python Developer Portfolio</title>
+  <style>
+    :root {
+      --primary: #6c63ff;
+      --secondary: #4d44db;
+      --dark: #121212;
+      --dark-secondary: #1e1e1e;
+      --light: #f8f9fa;
+      --text: #e0e0e0;
+      --text-secondary: #b0b0b0;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+      opacity: 0.1;
+    }
+    
+    header h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+      position: relative;
+      animation: fadeInDown 1s ease;
+    }
+    
+    header p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      position: relative;
+      animation: fadeIn 1.5s ease;
+    }
+    
+    nav {
+      margin-top: 15px;
+      position: relative;
+    }
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      position: relative;
+      padding: 5px 0;
+      transition: all 0.3s ease;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: white;
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    h2 {
+      border-left: 5px solid var(--primary);
+      padding-left: 10px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 50px;
+      height: 2px;
+      background: var(--primary);
+    }
+    
+    .project, .certification, .social-link, .about-card {
+      background-color: var(--dark-secondary);
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+    
+    .project:hover, .certification:hover, .social-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      border-left: 3px solid var(--primary);
+    }
+    
+    .btn, .cert-btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 10px 16px;
+      margin: 5px 10px 5px 0;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    
+    .btn:hover, .cert-btn:hover {
+      background-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    footer {
+      background-color: var(--dark-secondary);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .tech-tag {
+      display: inline-block;
+      background-color: rgba(108, 99, 255, 0.2);
+      color: var(--primary);
+      padding: 4px 10px;
+      margin: 5px 5px 5px 0;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .tech-tag:hover {
+      background-color: var(--primary);
+      color: white;
+      transform: scale(1.05);
+    }
+    
+    .python-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      z-index: 100;
+      animation: pulse 2s infinite;
+      cursor: pointer;
+    }
+    
+    .python-icon:hover {
+      animation: none;
+      transform: scale(1.1);
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .about-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+      box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+    }
+    
+    @media (max-width: 768px) {
+      .about-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Madhavendra Kumar Awasthi</h1>
+    <p>Python Developer | Java | Web Enthusiast</p>
+    <a href="https://drive.google.com/file/d/1N8Ku1Ll8YVIZqQizm_WMxsAvlnENs952/view?usp=sharing" class="btn" download>Download Resume</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#education">Education</a>
+      <a href="#social">Social</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-card">
+      <div class="about-text">
+        <p>Hello! I'm Madhavendra Kumar Awasthi, a passionate Python developer with a strong foundation in software development and problem-solving. I recently graduated with a B.Tech in Computer Science specializing in Data Science and AI.</p>
+        <p>My journey in programming began with Python, and I've since developed a deep appreciation for its versatility in web development, automation, and data science. I enjoy creating efficient solutions to real-world problems and continuously expanding my technical skills.</p>
+        <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or participating in coding competitions to sharpen my skills.</p>
+      </div>
+      <img src="https://github.com/Madhave-1/Madhav-portfolio/blob/main/profile.jpg" alt="Madhavendra Kumar Awasthi" class="profile-pic">
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p><strong>Languages:</strong> 
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">C/C++</span>
+      <span class="tech-tag">Java</span>
+    </p>
+    <p><strong>Web Development:</strong> 
+      <span class="tech-tag">HTML5</span>
+      <span class="tech-tag">CSS3</span>
+      <span class="tech-tag">Django</span>
+    </p>
+    <p><strong>Databases:</strong> 
+      <span class="tech-tag">MySQL</span>
+    </p>
+    <p><strong>Tools & Platforms:</strong> 
+      <span class="tech-tag">IBM SPSS</span>
+      <span class="tech-tag">Jupyter Notebook</span>
+      <span class="tech-tag">Firebase</span>
+      <span class="tech-tag">Git</span>
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>Apni Suraksha - Women Safety Application</h3>
+      <p>A comprehensive Android application designed to enhance women's safety with real-time GPS tracking (using device GPS), emergency alerts, and self-defense resources. The app features instant SOS functionality that sends alerts with location details to pre-configured contacts.</p>
+      <div class="tech-stack">
+        <span class="tech-tag">Java</span>
+        <span class="tech-tag">Android SDK</span>
+        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">GPS Services</span>
+        <span class="tech-tag">Material Design</span>
+      </div>
+      <a class="cert-btn" href="https://github.com/Madhave-1/Apni_Suraksha-" target="_blank">View Project on GitHub</a>
+    </div>
+    <div class="project">
+      <h3>Auto Nest - Smart Home Automation</h3>
+      <p>An innovative offline smart home automation system that uses computer vision and natural language processing to control home devices without internet dependency. The system includes security features like face recognition for access control.</p>
+      <div class="tech-stack">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">OpenCV</span>
+        <span class="tech-tag">NLTK</span>
+        <span class="tech-tag">Raspberry Pi</span>
+        <span class="tech-tag">IoT Protocols</span>
+      </div>
+    </div>
+    <div class="project">
+      <h3>Python Voice Assistant</h3>
+      <p>A voice-controlled personal assistant capable of performing various tasks including opening applications, reading news headlines, setting reminders, and answering queries using web scraping techniques.</p>
+      <div class="tech-stack">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">SpeechRecognition</span>
+        <span class="tech-tag">pyttsx3</span>
+        <span class="tech-tag">BeautifulSoup</span>
+        <span class="tech-tag">API Integration</span>
+      </div>
+    </div>
+    <div class="project">
+      <h3>Portfolio Website</h3>
+      <p>A responsive personal portfolio website showcasing my skills, projects, and achievements. The site features a clean, modern design with smooth animations and dark mode support.</p>
+      <div class="tech-stack">
+        <span class="tech-tag">HTML5</span>
+        <span class="tech-tag">CSS3</span>
+        <span class="tech-tag">Responsive Design</span>
+        <span class="tech-tag">UI/UX Principles</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <div class="certification">
+      <a class="cert-btn" href="https://drive.google.com/file/d/1dHcfCuLBZ8-GGzjL0fyZ4sUCeAztWQWz/view?usp=sharing" target="_blank">Software Programmer – Python (NASSCOM)</a>
+      <p>Certified in Python programming fundamentals and best practices by NASSCOM FutureSkills.</p>
+    </div>
+    <div class="certification">
+      <a class="cert-btn" href="https://drive.google.com/file/d/15DeER2pyEL2SK3Pt5z2W4rEY5A7Itrl_/view?usp=sharing" target="_blank">Introduction to Python (IBM)</a>
+      <p>Completed IBM's comprehensive introduction to Python programming course.</p>
+    </div>
+    <div class="certification">
+      <a class="cert-btn" href="https://drive.google.com/file/d/15B3xr6T1GfJU28cVPlcaktvaIqm8kTsi/view?usp=sharing" target="_blank">Python for Data Science (IBM)</a>
+      <p>Gained skills in using Python for data analysis, visualization, and basic machine learning.</p>
+    </div>
+    <div class="certification">
+      <a class="cert-btn" href="https://drive.google.com/file/d/14uHyCMzlQKyuIRGz5XlU9KVJ0Hnqe301/view?usp=sharing" target="_blank">Java Fundamentals (IBM)</a>
+      <p>Learned core Java programming concepts and object-oriented principles.</p>
+    </div>
+    <div class="certification">
+      <a class="cert-btn" href="https://drive.google.com/file/d/1HF-bxUJ4-_XFRmBgmyWS9w5kNXFM0nIM/view?usp=sharing" target="_blank">Enterprise Design Thinking Practitioner (IBM)</a>
+      <p>Certified in IBM's design thinking methodology for creating user-centered solutions.</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="project">
+      <h3>B.Tech in Computer Science</h3>
+      <p><strong>Shri Ramswaroop Memorial University</strong> (2024)</p>
+      <p>CGPA: 8.43/10 (First Class with Distinction)</p>
+      <p>Specialization in Data Science and Artificial Intelligence</p>
+    </div>
+    <div class="project">
+      <h3>Class XII (CBSE)</h3>
+      <p><strong>Kendriya Vidyalaya Aliganj</strong> (2020)</p>
+      <p>Percentage: 75.8%</p>
+    </div>
+    <div class="project">
+      <h3>Class X (CBSE)</h3>
+      <p><strong>Kendriya Vidyalaya Aliganj</strong> (2018)</p>
+      <p>Percentage: 70.4%</p>
+    </div>
+  </section>
+
+  <section id="social">
+    <h2>Connect With Me</h2>
+    <div class="social-link"><a class="cert-btn" href="https://www.linkedin.com/in/madhavendra-kumar-awasthi-a2b786212/" target="_blank">LinkedIn</a></div>
+    <div class="social-link"><a class="cert-btn" href="https://www.hackerrank.com/profile/madhavendraawas1" target="_blank">HackerRank</a></div>
+    <div class="social-link"><a class="cert-btn" href="https://www.codechef.com/users/madhavendra01" target="_blank">CodeChef</a></div>
+    <div class="social-link"><a class="cert-btn" href="https://github.com/Madhave-1" target="_blank">GitHub</a></div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="project">
+      <p><strong>Email:</strong> madhavendraawasthi2003@gmail.com</p>
+      <p><strong>Phone:</strong> +91 7355174697</p>
+      <p><strong>Location:</strong> Lucknow, India</p>
+      <p>Feel free to reach out for job opportunities, collaborations, or just to say hello!</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Madhavendra Kumar Awasthi. All rights reserved.</p>
+  </footer>
+
+  <div class="python-icon" title="Python Developer">Py</div>
+
+</body>
+</html>
